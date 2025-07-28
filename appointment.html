@@ -1,0 +1,313 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhysioCare - Book Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="appointment.css">
+</head>
+<body>
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <img src="d830295dd625e13dc5997190fc42fae7-removebg-preview (1).png" alt="therapy logo" class="logo-image">
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="contact.html" class="nav-item">Contact</a>
+            <a href="appointment.html" class="appointment-button">Book Appointment</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
+</header>
+
+
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <h1>Book an Appointment</h1>
+            <p>Schedule your physiotherapy session with our experts</p>
+        </div>
+    </section>
+
+    <section class="appointment-section">
+        <div class="appointment-container">
+            <div class="appointment-info fade-in">
+                <h2>How It Works</h2>
+                <div class="appointment-steps">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>1. Select Date & Time</h3>
+                            <p>Choose your preferred appointment date and time from our available slots.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>2. Choose Therapist</h3>
+                            <p>Select the physiotherapist you'd like to work with or let us assign one based on your needs.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>3. Provide Details</h3>
+                            <p>Tell us about your condition and any specific requirements you may have.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>4. Confirm Booking</h3>
+                            <p>Review your appointment details and confirm your booking.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="appointment-notice">
+                    <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                    <ul>
+                        <li>Please arrive 15 minutes before your scheduled appointment time.</li>
+                        <li>Bring any relevant medical records or referrals.</li>
+                        <li>Wear comfortable clothing that allows easy movement.</li>
+                        <li>Appointments can be rescheduled up to 24 hours in advance.</li>
+                        <li>A confirmation email will be sent once your appointment is booked.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="appointment-form-container slide-in-right">
+                <h2>Book Your Session</h2>
+                <form id="appointmentForm" class="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name*</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Type*</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="sports">Sports Physiotherapy</option>
+                            <option value="post-surgery">Post-Surgery Rehabilitation</option>
+                            <option value="chronic-pain">Chronic Pain Management</option>
+                            <option value="neurological">Neurological Rehabilitation</option>
+                            <option value="pediatric">Pediatric Physiotherapy</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="therapist">Preferred Therapist</label>
+                        <select id="therapist" name="therapist">
+                            <option value="">No preference</option>
+                            <option value="dr-johnson">Dr. Sarah Johnson</option>
+                            <option value="dr-chen">Dr. Michael Chen</option>
+                            <option value="dr-rodriguez">Dr. Emily Rodriguez</option>
+                            <option value="dr-kim">Dr. David Kim</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentDate">Appointment Date*</label>
+                        <input type="text" id="appointmentDate" name="appointmentDate" class="date-picker" placeholder="Select a date" required>
+                    </div>
+                    
+                    <div class="form-group time-slots">
+                        <label>Available Time Slots*</label>
+                        <div id="timeSlots" class="time-slots-container">
+                            <p class="select-date-message">Please select a date first</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Tell us about your condition or any specific requirements"></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="firstVisit" name="firstVisit">
+                        <label for="firstVisit">This is my first visit</label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                        <label for="termsAgree">I agree to the <a href="#" class="terms-link">terms and conditions</a>*</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn pulse">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>How long is a typical physiotherapy session?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our standard physiotherapy sessions are 45-60 minutes long. The first appointment may be slightly longer (up to 75 minutes) as it includes a comprehensive assessment of your condition.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>What should I wear to my appointment?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please wear comfortable, loose-fitting clothing that allows easy access to the area requiring treatment. For lower limb issues, shorts are recommended. For upper body issues, tank tops or t-shirts are suitable.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do I need a doctor's referral?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, you don't need a doctor's referral to book an appointment with us. However, if you have a referral or any medical reports, please bring them to your appointment as they can be helpful for your treatment plan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>How many sessions will I need?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The number of sessions varies depending on your condition, its severity, and how your body responds to treatment. After your initial assessment, your physiotherapist will provide a recommended treatment plan with an estimated number of sessions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept cash, credit/debit cards, and most major insurance plans. Payment is due at the time of service. Please check with your insurance provider regarding coverage for physiotherapy services.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>What is your cancellation policy?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We require 24 hours' notice for cancellations. Late cancellations or no-shows may be subject to a fee of 50% of the appointment cost. We understand that emergencies happen, so please contact us as soon as possible if you need to reschedule.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for appointment confirmation -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="confirmation-content">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Appointment Confirmed!</h2>
+                <div id="appointmentDetails" class="appointment-details">
+                    <!-- Details will be filled by JavaScript -->
+                </div>
+                <p>A confirmation email has been sent to your email address.</p>
+                <button id="closeModal" class="modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-shapes">
+            <div class="footer-shape footer-shape-1"></div>
+            <div class="footer-shape footer-shape-2"></div>
+            <div class="footer-shape footer-shape-3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">PhysioCare</div>
+                <p>Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            
+            
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <div class="footer-links">
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Sports Physiotherapy</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Post-Surgery Rehab</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Chronic Pain Management</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Neurological Rehabilitation</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Pediatric Physiotherapy</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Anytown, USA 12345</p>
+                    <p><i class="fas fa-phone-alt"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@physiocare.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 7:00 PM</p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 PhysioCare. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by PhysioCare Team</p>
+        </div>
+    </footer>
+
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+    <script src="appointment.js"></script>
+</body>
+</html>
