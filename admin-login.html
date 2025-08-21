@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="adminLoginPageTitle">Admin Login - Therapy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Simple Translate CSS -->
+<link rel="stylesheet" href="simple-translate.css">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/d830295dd625e13dc5997190fc42fae7-removebg-preview (1).png" alt="therapy logo" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item" data-i18n="home">Home</a>
+                <a href="services.html" class="nav-item" data-i18n="services">Services</a>
+                <a href="about.html" class="nav-item" data-i18n="about">About</a>
+                <a href="contact.html" class="nav-item" data-i18n="contact">Contact</a>
+                <a href="appointment.html" class="appointment-button" data-i18n="bookAppointment">Book Appointment</a>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="sq">SQ</button>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="admin-login-section">
+        <div class="admin-login-container">
+            <div class="admin-login-card">
+                <div class="admin-login-header">
+                    <h2><i class="fas fa-lock"></i> <span data-i18n="adminLogin">Admin Login</span></h2>
+                    <p data-i18n="adminLoginSubtitle">Enter your password to access the admin dashboard</p>
+                </div>
+                
+                <form id="adminLoginForm" class="admin-login-form">
+                    <div class="form-group">
+                        <label for="adminPassword" data-i18n="passwordLabel">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="adminPassword" name="adminPassword" required>
+                            <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility" data-i18n-aria-label="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="submit-btn-container">
+                        <button type="submit" class="submit-btn" data-i18n="loginButton">Login</button>
+                    </div>
+                </form>
+                
+                <div class="admin-login-footer">
+                    <p data-i18n="forgotPassword">Forgot password? Contact the system administrator.</p>
+                    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="backToHome">Back to Home</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-shapes">
+            <div class="footer-shape footer-shape-1"></div>
+            <div class="footer-shape footer-shape-2"></div>
+            <div class="footer-shape footer-shape-3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo translatable" data-en="Therapy" data-sq="Therapy">Therapy</div>
+                <p class="translatable" data-en="Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs." data-sq="Shërbime profesionale të fizioterapisë që ju ndihmojnë të shëroheni më shpejt dhe të lëvizni më mirë. Ekipi ynë i ekspertëve është i përkushtuar për të ofruar kujdes të personalizuar për të gjitha nevojat tuaja.">Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Our Services" data-sq="Shërbimet Tona">Our Services</h3>
+                <div class="footer-links">
+                    <a href="services.html" class="translatable" data-en=" Physiotherapy Treatment" data-sq=" Trajtim Fizioterapeutik"><i class="fas fa-chevron-right"></i> Physiotherapy Treatment</a>
+                    <a href="services.html" class="translatable" data-en=" Osteopathy" data-sq="Osteopati"><i class="fas fa-chevron-right"></i> Osteopathy</a>
+                    <a href="services.html" class="translatable" data-en=" Sports Physiotherapy" data-sq="Fizioterapi Sportive"><i class="fas fa-chevron-right"></i> Sports Physiotherapy</a>
+                    <a href="services.html" class="translatable" data-en=" Neurological Rehabilitation" data-sq="Rehabilitim Neurologjik"><i class="fas fa-chevron-right"></i> Neurological Rehabilitation</a>
+                    <a href="services.html" class="translatable" data-en="Pediatric Physiotherapy" data-sq=" Fizioterapi Pediatrike"><i class="fas fa-chevron-right"></i> Pediatric Physiotherapy</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Contact Info" data-sq="Informacione Kontakti">Contact Info</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> <span class="translatable" data-en="Rifat Burdzeviç, Prishtina, Kosovo 10000" data-sq="Rifat Burdzeviç, Prishtinë, Kosovë 10000">Rifat Burdzeviç, Prishtina, Kosovo 10000</span></p>
+                    <p><i class="fas fa-phone-alt"></i> <span class="translatable" data-en="+38345646464" data-sq="+38345646464">+38345646464</span></p>
+                    <p><i class="fas fa-envelope"></i> <span class="translatable" data-en="info@therapy.com" data-sq="info@therapy.com">info@therapy.com</span></p>
+                    <p><i class="fas fa-clock"></i> <span class="translatable" data-en="Mon-Fri: 8:00 AM - 7:00 PM" data-sq="E Hënë-E Premte: 8:00 - 19:00">Mon-Fri: 8:00 AM - 7:00 PM</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="translatable" data-en="© 2025 Therapy. All rights reserved." data-sq="© 2025 Therapy. Të gjitha të drejtat e rezervuara.">© 2025 Therapy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-i18n-aria-label="toggleDarkMode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
+    <script src="simple-translate.js"></script>
+    <script>
+        // Direct fix for language buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force remove any existing event listeners
+            const enBtn = document.querySelector('.lang-btn[data-lang="en"]');
+            const sqBtn = document.querySelector('.lang-btn[data-lang="sq"]');
+            
+            if (enBtn) {
+                const newEnBtn = enBtn.cloneNode(true);
+                enBtn.parentNode.replaceChild(newEnBtn, enBtn);
+                newEnBtn.addEventListener('click', function() {
+                    console.log('English button clicked');
+                    localStorage.setItem('preferredLanguage', 'en');
+                    window.location.reload();
+                });
+            }
+            
+            if (sqBtn) {
+                const newSqBtn = sqBtn.cloneNode(true);
+                sqBtn.parentNode.replaceChild(newSqBtn, sqBtn);
+                newSqBtn.addEventListener('click', function() {
+                    console.log('Albanian button clicked');
+                    localStorage.setItem('preferredLanguage', 'sq');
+                    window.location.reload();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

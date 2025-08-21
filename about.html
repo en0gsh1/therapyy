@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="aboutPageTitle">Therapy - About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Language Switcher CSS -->
+    <style>
+        /* Language Switcher Styles */
+        .custom-select-wrapper {
+            position: relative;
+            width: 180px;
+            font-family: sans-serif;
+            margin-left: 20px;
+            color: #000;
+        }
+
+        .custom-select {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-select img {
+            width: 24px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .arrow {
+            font-size: 25px;
+            margin-left: auto;
+            color: #333;
+        }
+
+        .select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+        }
+
+        .select-options div {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .select-options div:hover {
+            background: #f0f0f0;
+        }
+
+        .select-options img {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        .select-options.show {
+            display: block;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .custom-select-wrapper {
+                margin: 15px 0 0;
+            }
+        }
+        
+        /* Responsive About Page Styles */
+        
+        /* About Section */
+        .about-section {
+            padding: 5rem 0;
+            background-color: var(--background-color, #f5f5f5);
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .about-content h2 {
+            color: var(--primary-color, #4CAF50);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color, #333);
+        }
+        
+        .about-image-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: auto;
+            width: 100%;
+        }
+        
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+            max-width: 100%;
+        }
+        
+        .about-image-container:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 5rem 0;
+            background-color: var(--card-background, #fff);
+        }
+        
+        .mission-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .mission-card,
+        .vision-card {
+            background-color: var(--background-color, #f5f5f5);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .mission-card:hover,
+        .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mission-card h2,
+        .vision-card h2 {
+            color: var(--primary-color, #4CAF50);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .mission-card h2:after,
+        .vision-card h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color, #4CAF50);
+        }
+        
+        .mission-card p,
+        .vision-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color, #333);
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+            background-color: var(--background-color, #f5f5f5);
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-color, #4CAF50);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color, #4CAF50);
+        }
+        
+        .team-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+        
+        .team-member {
+            background-color: var(--card-background, #fff);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .member-photo {
+            height: 250px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .seeyuh {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .seeyuh img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .seeyuh img {
+            transform: scale(1.1);
+        }
+        
+        .team-member h3 {
+            color: var(--primary-color, #4CAF50);
+            margin: 1.5rem 1.5rem 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .member-title {
+            color: var(--accent-color, #2E7D32);
+            font-weight: 600;
+            margin: 0 1.5rem 0.5rem;
+        }
+        
+        .member-bio {
+            color: var(--text-color, #333);
+            margin: 0 1.5rem 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 1rem;
+            margin: 0 1.5rem 1.5rem;
+            margin-top: auto; /* Push to bottom of flex container */
+            padding-top: 1rem;
+        }
+        
+        .member-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary-color, #4CAF50);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .member-social a:hover {
+            background-color: var(--accent-color, #2E7D32);
+            transform: translateY(-3px);
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Responsive Styles */
+        @media (min-width: 992px) {
+            .about-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .team-grid {
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .mission-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .section-title,
+            .about-content h2,
+            .mission-card h2,
+            .vision-card h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-section,
+            .mission-vision,
+            .team-section {
+                padding: 3rem 0;
+            }
+            
+            .about-content h2,
+            .mission-card h2,
+            .vision-card h2,
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .about-content p,
+            .mission-card p,
+            .vision-card p {
+                font-size: 1rem;
+            }
+            
+            .mission-card,
+            .vision-card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-content h2,
+            .mission-card h2,
+            .vision-card h2,
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .mission-card,
+            .vision-card {
+                padding: 1.5rem;
+            }
+            
+            .team-member h3 {
+                font-size: 1.2rem;
+            }
+            
+            .member-title,
+            .member-bio {
+                font-size: 0.95rem;
+            }
+            
+            /* Make team member photos slightly shorter on mobile */
+            .member-photo {
+                padding-top: 75%; /* 4:3 aspect ratio */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/d830295dd625e13dc5997190fc42fae7-removebg-preview (1).png" alt="therapy logo" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item translatable" data-en="Home" data-sq="Ballina">Home</a>
+                <a href="services.html" class="nav-item translatable" data-en="Services" data-sq="Shërbimet">Services</a>
+                <a href="about.html" class="nav-item translatable" data-en="About" data-sq="Rreth Nesh">About</a>
+                <a href="contact.html" class="nav-item translatable" data-en="Contact" data-sq="Kontakti">Contact</a>
+                <a href="appointment.html" class="appointment-button translatable" data-en="Book Appointment" data-sq="Rezervo Takim">Book Appointment</a>
+                
+                <!-- Dropdown Language Switcher -->
+                <div class="custom-select-wrapper">
+                    <div class="custom-select" onclick="toggleDropdown()">
+                        <img id="selected-flag" src="https://flagcdn.com/w40/us.png" alt="flag" />
+                        <span id="selected-lang">English</span>
+                        <span class="arrow">▾</span>
+                    </div>
+                    <div class="select-options">
+                        <div onclick="selectLanguage('en')">
+                            <img src="https://flagcdn.com/w40/us.png" alt="EN" />
+                            <span>English</span>
+                        </div>
+                        <div onclick="selectLanguage('sq')">
+                            <img src="https://flagcdn.com/w40/al.png" alt="SQ" />
+                            <span>Shqip</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <h1 class="translatable" data-en="About Us" data-sq="Rreth Nesh">About Us</h1>
+            <p class="translatable" data-en="Learn more about our clinic and our dedicated team" data-sq="Mësoni më shumë për klinikën tonë dhe ekipin tonë të përkushtuar">Learn more about our clinic and our dedicated team</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-content fade-in">
+                <h2 class="translatable" data-en="Our Story" data-sq="Historia Jonë">Our Story</h2>
+                <p class="translatable" data-en="Therapy was founded in 2010 with a simple mission: to provide exceptional physiotherapy services that help patients recover faster and move better. What started as a small clinic with just two physiotherapists has grown into a comprehensive rehabilitation center with a team of specialists dedicated to improving the quality of life for our patients." data-sq="Therapy u themelua në vitin 2010 me një mision të thjeshtë: të ofrojë shërbime të jashtëzakonshme fizioterapie që ndihmojnë pacientët të shërohen më shpejt dhe të lëvizin më mirë. Ajo që filloi si një klinikë e vogël me vetëm dy fizioterapistë është rritur në një qendër gjithëpërfshirëse rehabilitimi me një ekip specialistësh të përkushtuar për përmirësimin e cilësisë së jetës së pacientëve tanë.">Therapy was founded in 2010 with a simple mission: to provide exceptional physiotherapy services that help patients recover faster and move better. What started as a small clinic with just two physiotherapists has grown into a comprehensive rehabilitation center with a team of specialists dedicated to improving the quality of life for our patients.</p>
+                <p class="translatable" data-en="Over the years, we've helped thousands of patients recover from injuries, manage chronic conditions, and enhance their physical performance. Our success is built on our commitment to personalized care, evidence-based treatments, and continuous professional development." data-sq="Ndër vite, kemi ndihmuar mijëra pacientë të shërohen nga lëndimet, të menaxhojnë gjendje kronike dhe të përmirësojnë performancën e tyre fizike. Suksesi ynë është ndërtuar mbi përkushtimin tonë ndaj kujdesit të personalizuar, trajtimeve të bazuara në prova dhe zhvillimit të vazhdueshëm profesional.">Over the years, we've helped thousands of patients recover from injuries, manage chronic conditions, and enhance their physical performance. Our success is built on our commitment to personalized care, evidence-based treatments, and continuous professional development.</p>
+            </div>
+            <div class="about-image-container fade-in">
+                <img src="https://eshendetesia.com/images/businesses/8a666a4c660bdc5c653d44615797b422.jpg" alt="Therapy">
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-vision">
+        <div class="mission-container">
+            <div class="mission-card slide-in-left">
+                <h2 class="translatable" data-en="Our Mission" data-sq="Misioni Ynë">Our Mission</h2>
+                <p class="translatable" data-en="To provide exceptional physiotherapy services that help our patients recover faster and move better through personalized care and evidence-based treatments." data-sq="Të ofrojmë shërbime të jashtëzakonshme fizioterapie që ndihmojnë pacientët tanë të shërohen më shpejt dhe të lëvizin më mirë përmes kujdesit të personalizuar dhe trajtimeve të bazuara në prova.">To provide exceptional physiotherapy services that help our patients recover faster and move better through personalized care and evidence-based treatments.</p>
+            </div>
+            <div class="vision-card slide-in-right">
+                <h2 class="translatable" data-en="Our Vision" data-sq="Vizioni Ynë">Our Vision</h2>
+                <p class="translatable" data-en="To be the leading physiotherapy clinic known for excellence in patient care, innovative treatment approaches, and outstanding outcomes." data-sq="Të jemi klinika kryesore e fizioterapisë e njohur për ekselencën në kujdesin ndaj pacientëve, qasjet inovative të trajtimit dhe rezultatet e jashtëzakonshme.">To be the leading physiotherapy clinic known for excellence in patient care, innovative treatment approaches, and outstanding outcomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2 class="section-title translatable" data-en="Our Team" data-sq="Ekipi Ynë">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <div class="member-photo">
+                    <div class="seeyuh">
+                        <img src="images/18c1548568573064aa7aecfbe1844609.png" alt="Prof.Asocc.Dr Zheraldin Derguri">
+                    </div>
+                </div>
+                <h3>Prof.Asocc.Dr Zheraldin Derguri PT ODR</h3>
+                <p class="member-title translatable" data-en="Head Physiotherapist" data-sq="Fizioterapist Kryesor">Head Physiotherapist</p>
+                <p class="member-bio translatable" data-en="With over 15 years of experience, Dr. Johnson specializes in sports injuries and post-operative rehabilitation." data-sq="Me mbi 15 vjet përvojë, Dr. Johnson specializohet në lëndime sportive dhe rehabilitim pas operacionit.">With over 15 years of experience, Dr. Johnson specializes in sports injuries and post-operative rehabilitation.</p>
+                <div class="member-social">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">
+                    <div class="seeyuh">
+                        <img src="images/a.png" alt="Zymreta Derguti">
+                    </div>
+                </div>
+                <h3>Zymreta Derguti PT</h3>
+                <p class="member-title translatable" data-en="Sports Specialist" data-sq="Specialist i Sportit">Sports Specialist</p>
+                <p class="member-bio translatable" data-en="Dr. Chen has worked with professional athletes and specializes in performance enhancement and injury prevention." data-sq="Dr. Chen ka punuar me atletë profesionistë dhe specializohet në përmirësimin e performancës dhe parandalimin e lëndimeve.">Dr. Chen has worked with professional athletes and specializes in performance enhancement and injury prevention.</p>
+                <div class="member-social">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">
+                    <div class="seeyuh">
+                        <img src="images/downloada.png" alt="Dea Derguti">
+                    </div>
+                </div>
+                <h3>Dea Derguti PT</h3>
+                <p class="member-title translatable" data-en="Rehabilitation Expert" data-sq="Ekspert i Rehabilitimit">Rehabilitation Expert</p>
+                <p class="member-bio translatable" data-en="Dr. Rodriguez specializes in neurological rehabilitation and chronic pain management." data-sq="Dr. Rodriguez specializohet në rehabilitimin neurologjik dhe menaxhimin e dhimbjeve kronike.">Dr. Rodriguez specializes in neurological rehabilitation and chronic pain management.</p>
+                <div class="member-social">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-shapes">
+            <div class="footer-shape footer-shape-1"></div>
+            <div class="footer-shape footer-shape-2"></div>
+            <div class="footer-shape footer-shape-3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo translatable" data-en="Therapy" data-sq="Therapy">Therapy</div>
+                <p class="translatable" data-en="Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs." data-sq="Shërbime profesionale të fizioterapisë që ju ndihmojnë të shëroheni më shpejt dhe të lëvizni më mirë. Ekipi ynë i ekspertëve është i përkushtuar për të ofruar kujdes të personalizuar për të gjitha nevojat tuaja.">Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Our Services" data-sq="Shërbimet Tona">Our Services</h3>
+                <div class="footer-links">
+                    <a href="services.html" class="translatable" data-en=" Physiotherapy Treatment" data-sq=" Trajtim Fizioterapeutik"><i class="fas fa-chevron-right"></i> Physiotherapy Treatment</a>
+                    <a href="services.html" class="translatable" data-en=" Osteopathy" data-sq="Osteopati"><i class="fas fa-chevron-right"></i> Osteopathy</a>
+                    <a href="services.html" class="translatable" data-en=" Sports Physiotherapy" data-sq="Fizioterapi Sportive"><i class="fas fa-chevron-right"></i> Sports Physiotherapy</a>
+                    <a href="services.html" class="translatable" data-en=" Neurological Rehabilitation" data-sq="Rehabilitim Neurologjik"><i class="fas fa-chevron-right"></i> Neurological Rehabilitation</a>
+                    <a href="services.html" class="translatable" data-en="Pediatric Physiotherapy" data-sq=" Fizioterapi Pediatrike"><i class="fas fa-chevron-right"></i> Pediatric Physiotherapy</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Contact Info" data-sq="Informacione Kontakti">Contact Info</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> <span class="translatable" data-en="Rifat Burdzeviç, Prishtina, Kosovo 10000" data-sq="Rifat Burdzeviç, Prishtinë, Kosovë 10000">Rifat Burdzeviç, Prishtina, Kosovo 10000</span></p>
+                    <p><i class="fas fa-phone-alt"></i> <span class="translatable" data-en="+38345646464" data-sq="+38345646464">+38345646464</span></p>
+                    <p><i class="fas fa-envelope"></i> <span class="translatable" data-en="info@therapy.com" data-sq="info@therapy.com">info@therapy.com</span></p>
+                    <p><i class="fas fa-clock"></i> <span class="translatable" data-en="Mon-Fri: 8:00 AM - 7:00 PM" data-sq="E Hënë-E Premte: 8:00 - 19:00">Mon-Fri: 8:00 AM - 7:00 PM</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           <p class="translatable" data-en="© 2025 Therapy. All rights reserved. | Designed by Eno Gashi" data-sq="© 2025 Therapy. Të gjitha të drejtat e rezervuara. | Dizajnuar nga Eno Gashi">© 2025 Therapy. All rights reserved. | Designed by Eno Gashi</p>
+        </div>
+    </footer>
+
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        function toggleDropdown() {
+            document.querySelector('.select-options').classList.toggle('show');
+        }
+
+        function selectLanguage(lang) {
+            const flag = lang === 'sq'
+                ? 'https://flagcdn.com/w40/al.png'
+                : 'https://flagcdn.com/w40/us.png';
+
+            const label = lang === 'sq' ? 'Shqip' : 'English';
+
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            document.querySelector('.select-options').classList.remove('show');
+
+            switchLanguage(lang);
+        }
+
+        // Optional: Close dropdown if clicked outside
+        window.addEventListener('click', function (e) {
+            if (!document.querySelector('.custom-select-wrapper').contains(e.target)) {
+                document.querySelector('.select-options').classList.remove('show');
+            }
+        });
+
+        function switchLanguage(lang) {
+            const html = document.documentElement;
+
+            // Set lang attribute
+            html.setAttribute('lang', lang);
+
+            // Update text for all translatable elements
+            document.querySelectorAll('.translatable').forEach(el => {
+                if (el.dataset[lang]) {
+                    el.textContent = el.dataset[lang];
+                }
+            });
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+                // Initialize with saved language or default to English
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            
+            // Set initial flag and label
+            const flag = savedLang === 'sq'
+                ? 'https://flagcdn.com/w40/al.png'
+                : 'https://flagcdn.com/w40/us.png';
+            const label = savedLang === 'sq' ? 'Shqip' : 'English';
+            
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            
+            // Apply saved language
+            switchLanguage(savedLang);
+            
+            // Animation on scroll
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Function to handle scroll animations
+            function handleScrollAnimations() {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                const slideLeftElements = document.querySelectorAll('.slide-in-left');
+                const slideRightElements = document.querySelectorAll('.slide-in-right');
+                
+                fadeElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        element.classList.add('active');
+                    }
+                });
+                
+                slideLeftElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        element.classList.add('active');
+                    }
+                });
+                
+                slideRightElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Run once on page load
+            handleScrollAnimations();
+            
+            // Run on scroll
+            window.addEventListener('scroll', handleScrollAnimations);
+        });
+    </script>
+</body>
+</html>

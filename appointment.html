@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en, sq">
+    <title data-i18n="appointmentPageTitle">Therapy - Book Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="appointment.css">
+    
+    <!-- Language Switcher CSS -->
+    <style>
+        /* Language Switcher Styles */
+        .custom-select-wrapper {
+            position: relative;
+            width: 180px;
+            font-family: sans-serif;
+            margin-left: 20px;
+            color: #000;
+        }
+
+        .custom-select {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-select img {
+            width: 24px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .arrow {
+            font-size: 25px;
+            margin-left: auto;
+            color: #333;
+        }
+
+        .select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+        }
+
+        .select-options div {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .select-options div:hover {
+            background: #f0f0f0;
+        }
+
+        .select-options img {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        .select-options.show {
+            display: block;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .custom-select-wrapper {
+                margin: 15px 0 0;
+            }
+        }
+    </style>
+
+    <link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/appointment.html">
+    <link rel="alternate" hreflang="sq" href="https://yourwebsite.com/sq/appointment.html">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html"> 
+                    <img src="images/d830295dd625e13dc5997190fc42fae7-removebg-preview (1).png" alt="" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item translatable" data-en="Home" data-sq="Ballina">Home</a>
+                <a href="services.html" class="nav-item translatable" data-en="Services" data-sq="Shërbimet">Services</a>
+                <a href="about.html" class="nav-item translatable" data-en="About" data-sq="Rreth Nesh">About</a>
+                <a href="contact.html" class="nav-item translatable" data-en="Contact" data-sq="Kontakti">Contact</a>
+                <a href="appointment.html" class="appointment-button active translatable" data-en="Book Appointment" data-sq="Rezervo Takim">Book Appointment</a>
+                
+                <!-- Dropdown Language Switcher -->
+                <div class="custom-select-wrapper">
+                    <div class="custom-select" onclick="toggleDropdown()">
+                        <img id="selected-flag" src="https://flagcdn.com/w40/us.png" alt="flag" />
+                        <span id="selected-lang">English</span>
+                        <span class="arrow">▾</span>
+                    </div>
+                    <div class="select-options">
+                        <div onclick="selectLanguage('en')">
+                            <img src="https://flagcdn.com/w40/us.png" alt="EN" />
+                            <span>English</span>
+                        </div>
+                        <div onclick="selectLanguage('sq')">
+                            <img src="https://flagcdn.com/w40/al.png" alt="SQ" />
+                            <span>Shqip</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <h1 class="translatable" data-en="Book an Appointment" data-sq="Rezervo një Takim">Book an Appointment</h1>
+            <p class="translatable" data-en="Schedule your physiotherapy session with our experts" data-sq="Planifikoni seancën tuaj të fizioterapisë me ekspertët tanë">Schedule your physiotherapy session with our experts</p>
+        </div>
+    </section>
+
+    <section class="appointment-section">
+        <div class="appointment-container two-column-layout">
+            <!-- Left Column: How it Works -->
+            <div class="appointment-info">
+                <h2 class="translatable" data-en="How It Works" data-sq="Si Funksionon">How It Works</h2>
+                <div class="appointment-steps">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="translatable" data-en="1. Provide Details" data-sq="1. Jepni Detajet">3. Provide Details</h3>
+                            <p class="translatable" data-en="Tell us about your condition and any specific requirements you may have." data-sq="Na tregoni për gjendjen tuaj dhe çdo kërkesë specifike që mund të keni.">Tell us about your condition and any specific requirements you may have.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="translatable" data-en="2. Choose Therapist" data-sq="2. Zgjidhni Terapistin">2. Choose Therapist</h3>
+                            <p class="translatable" data-en="Select the physiotherapist you'd like to work with or let us assign one based on your needs." data-sq="Zgjidhni fizioterapistin me të cilin dëshironi të punoni ose na lejoni t'ju caktojmë një bazuar në nevojat tuaja.">Select the physiotherapist you'd like to work with or let us assign one based on your needs.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="translatable" data-en="3. Select Date & Time" data-sq="3. Zgjidhni Datën & Orën">1. Select Date & Time</h3>
+                            <p class="translatable" data-en="Choose your preferred appointment date and time from our available slots." data-sq="Zgjidhni datën dhe orën e preferuar të takimit nga hapësirat tona të disponueshme.">Choose your preferred appointment date and time from our available slots.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="translatable" data-en="4. Confirm Booking" data-sq="4. Konfirmoni Rezervimin">4. Confirm Booking</h3>
+                            <p class="translatable" data-en="Review your appointment details and confirm your booking." data-sq="Rishikoni detajet e takimit tuaj dhe konfirmoni rezervimin tuaj.">Review your appointment details and confirm your booking.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="appointment-notice">
+                    <h3><i class="fas fa-info-circle"></i> <span class="translatable" data-en="Important Information" data-sq="Informacion i Rëndësishëm">Important Information</span></h3>
+                    <ul>
+                        <li class="translatable" data-en="Please arrive 15 minutes before your scheduled appointment time." data-sq="Ju lutemi mbërrini 15 minuta para orës së caktuar të takimit.">Please arrive 15 minutes before your scheduled appointment time.</li>
+                        <li class="translatable" data-en="Bring any relevant medical records or referrals." data-sq="Sillni çdo dokument mjekësor ose referim përkatës.">Bring any relevant medical records or referrals.</li>
+                        <li class="translatable" data-en="Wear comfortable clothing that allows easy movement." data-sq="Vishni rroba të rehatshme që lejojnë lëvizje të lehtë.">Wear comfortable clothing that allows easy movement.</li>
+                        <li class="translatable" data-en="Appointments can be rescheduled up to 24 hours in advance." data-sq="Takimet mund të riplanifikohen deri në 24 orë përpara.">Appointments can be rescheduled up to 24 hours in advance.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Right Column: Booking Form -->
+            <div class="appointment-form-container">
+                <h2 class="translatable" data-en="Book Your Session" data-sq="Rezervoni Seancën Tuaj">Book Your Session</h2>
+                <form id="appointmentForm" class="appointment-form">
+                    <div class="form-group">
+                        <label for="name" class="translatable" data-en="Full Name*" data-sq="Emri i Plotë*">Full Name*</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="translatable" data-en="Email*" data-sq="Email*">Email*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="translatable" data-en="Phone Number*" data-sq="Numri i Telefonit*">Phone Number*</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service" class="translatable" data-en="Service Type*" data-sq="Lloji i Shërbimit*">Service Type*</label>
+                        <select id="service" name="service" required>
+                            <option value="" class="translatable" data-en="Select a service" data-sq="Zgjidhni një shërbim">Select a service</option>
+                            <option value="sports" class="translatable" data-en="Physiotherapy" data-sq="Fizioterapi">Physiotherapy</option>
+                            <option value="sports" class="translatable" data-en="Osteopathy" data-sq="Osteopati">Osteopathy</option>
+                            <option value="sports" class="translatable" data-en="Sports Physiotherapy" data-sq="Fizioterapi Sportive">Sports Physiotherapy</option>
+                            <option value="post-surgery" class="translatable" data-en="Post-Surgery Rehabilitation" data-sq="Rehabilitim Pas Operacionit">Post-Surgery Rehabilitation</option>
+                            <option value="chronic-pain" class="translatable" data-en="Chronic Pain Management" data-sq="Menaxhimi i Dhimbjes Kronike">Chronic Pain Management</option>
+                            <option value="neurological" class="translatable" data-en="Neurological Rehabilitation" data-sq="Rehabilitim Neurologjik">Neurological Rehabilitation</option>
+                            <option value="pediatric" class="translatable" data-en="Pediatric Physiotherapy" data-sq="Fizioterapi Pediatrike">Pediatric Physiotherapy</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="therapist" class="translatable" data-en="Preferred Therapist" data-sq="Terapisti i Preferuar">Preferred Therapist</label>
+                        <select id="therapist" name="therapist">
+                            <option value="" class="translatable" data-en="No preference" data-sq="Pa preferenca">No preference</option>
+                            <option value="dr-johnson">Zheraldin Derguti</option>
+                            <option value="dr-chen">Zymreta Derguti</option>
+                            <option value="dr-rodriguez">Dea Derguti</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentDate" class="translatable" data-en="Appointment Date*" data-sq="Data e Takimit*">Appointment Date*</label>
+                        <input type="text" id="appointmentDate" name="appointmentDate" class="date-picker" placeholder="Select a date" required>
+                    </div>
+                    
+                    <div class="form-group time-slots">
+                        <label class="translatable" data-en="Available Time Slots*" data-sq="Oraret e Disponueshme*">Available Time Slots*</label>
+                        <div id="timeSlots" class="time-slots-container">
+                            <p class="select-date-message translatable" data-en="Please select a date first" data-sq="Ju lutemi zgjidhni një datë fillimisht">Please select a date first</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes" class="translatable" data-en="Additional Notes" data-sq="Shënime Shtesë">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Tell us about your condition or any specific requirements"></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="firstVisit" name="firstVisit">
+                        <label for="firstVisit" class="translatable" data-en="This is my first visit" data-sq="Ky është vizita ime e parë">This is my first visit</label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                        <label for="termsAgree">
+                            <span class="translatable" data-en="I agree to the" data-sq="Unë pajtohem me">I agree to the</span> 
+                            <a href="#" class="terms-link translatable" data-en="terms and conditions" data-sq="kushtet dhe rregullat">terms and conditions</a>*
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn translatable" data-en="Book Appointment" data-sq="Rezervo Takimin">Book Appointment</button>
+                </form>
+                
+                <div id="message" class="message" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-shapes">
+            <div class="footer-shape footer-shape-1"></div>
+            <div class="footer-shape footer-shape-2"></div>
+            <div class="footer-shape footer-shape-3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo translatable" data-en="Therapy" data-sq="Therapy">Therapy</div>
+                <p class="translatable" data-en="Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs." data-sq="Shërbime profesionale të fizioterapisë që ju ndihmojnë të shëroheni më shpejt dhe të lëvizni më mirë. Ekipi ynë i ekspertëve është i përkushtuar për të ofruar kujdes të personalizuar për të gjitha nevojat tuaja.">Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Our Services" data-sq="Shërbimet Tona">Our Services</h3>
+                <div class="footer-links">
+                    <a href="services.html" class="translatable" data-en="<i class='fas fa-chevron-right'></i> Physiotherapy Treatment" data-sq="<i class='fas fa-chevron-right'></i> Trajtim Fizioterapeutik"><i class="fas fa-chevron-right"></i> Physiotherapy Treatment</a>
+                    <a href="services.html" class="translatable" data-en="<i class='fas fa-chevron-right'></i> Osteopathy" data-sq="<i class='fas fa-chevron-right'></i> Osteopati"><i class="fas fa-chevron-right"></i> Osteopathy</a>
+                    <a href="services.html" class="translatable" data-en="<i class='fas fa-chevron-right'></i> Sports Physiotherapy" data-sq="<i class='fas fa-chevron-right'></i> Fizioterapi Sportive"><i class="fas fa-chevron-right"></i> Sports Physiotherapy</a>
+                    <a href="services.html" class="translatable" data-en="<i class='fas fa-chevron-right'></i> Neurological Rehabilitation" data-sq="<i class='fas fa-chevron-right'></i> Rehabilitim Neurologjik"><i class="fas fa-chevron-right"></i> Neurological Rehabilitation</a>
+                    <a href="services.html" class="translatable" data-en="<i class='fas fa-chevron-right'></i> Pediatric Physiotherapy" data-sq="<i class='fas fa-chevron-right'></i> Fizioterapi Pediatrike"><i class="fas fa-chevron-right"></i> Pediatric Physiotherapy</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Contact Info" data-sq="Informacione Kontakti">Contact Info</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> <span class="translatable" data-en="Rifat Burdzeviç, Prishtina, Kosovo 10000" data-sq="Rifat Burdzeviç, Prishtinë, Kosovë 10000">Rifat Burdzeviç, Prishtina, Kosovo 10000</span></p>
+                    <p><i class="fas fa-phone-alt"></i> <span class="translatable" data-en="+38345646464" data-sq="+38345646464">+38345646464</span></p>
+                    <p><i class="fas fa-envelope"></i> <span class="translatable" data-en="info@therapy.com" data-sq="info@therapy.com">info@therapy.com</span></p>
+                    <p><i class="fas fa-clock"></i> <span class="translatable" data-en="Mon-Fri: 8:00 AM - 7:00 PM" data-sq="E Hënë-E Premte: 8:00 - 19:00">Mon-Fri: 8:00 AM - 7:00 PM</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="translatable" data-en="© 2025 Therapy. All rights reserved." data-sq="© 2025 Therapy. Të gjitha të drejtat e rezervuara.">© 2025 Therapy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="appointment.js"></script>
+    <script src="flatpickr-sq.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        function toggleDropdown() {
+            document.querySelector('.select-options').classList.toggle('show');
+        }
+
+        function selectLanguage(lang) {
+            const flag = lang === 'sq'
+                ? 'https://flagcdn.com/w40/al.png'
+                : 'https://flagcdn.com/w40/us.png';
+
+            const label = lang === 'sq' ? 'Shqip' : 'English';
+
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            document.querySelector('.select-options').classList.remove('show');
+
+            switchLanguage(lang);
+        }
+
+        // Optional: Close dropdown if clicked outside
+        window.addEventListener('click', function (e) {
+            if (!document.querySelector('.custom-select-wrapper').contains(e.target)) {
+                document.querySelector('.select-options').classList.remove('show');
+            }
+        });
+
+        function switchLanguage(lang) {
+            const html = document.documentElement;
+
+            // Set lang attribute
+            html.setAttribute('lang', lang);
+
+            // Update text for all translatable elements
+            document.querySelectorAll('.translatable').forEach(el => {
+                if (el.dataset[lang]) {
+                    el.textContent = el.dataset[lang];
+                }
+            });
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update flatpickr if it exists
+            if (window.flatpickr && document.querySelector('.flatpickr-input')) {
+                const datePickerInput = document.getElementById('appointmentDate');
+                if (datePickerInput && datePickerInput._flatpickr) {
+                    datePickerInput._flatpickr.set('locale', lang);
+                }
+            }
+        }
+        
+        // Initialize with saved language or default to English
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            
+            // Set initial flag and label
+            const flag = savedLang === 'sq'
+                ? 'https://flagcdn.com/w40/al.png'
+                : 'https://flagcdn.com/w40/us.png';
+            const label = savedLang === 'sq' ? 'Shqip' : 'English';
+            
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            
+            // Apply saved language
+            switchLanguage(savedLang);
+            
+            // Initialize appointments storage
+            if (!localStorage.getItem('appointments')) {
+                localStorage.setItem('appointments', JSON.stringify([]));
+            }
+            
+            // Initialize flatpickr with the correct locale
+            if (window.flatpickr) {
+                flatpickr("#appointmentDate", {
+                    minDate: "today",
+                    dateFormat: "Y-m-d",
+                    disable: [
+                        function(date) {
+                            // Disable weekends (Saturday is 6, Sunday is 0)
+                            return (date.getDay() === 0 || date.getDay() === 6);
+                        }
+                    ],
+                    locale: savedLang,
+                    onChange: function(selectedDates, dateStr) {
+                        // Check available time slots when date changes
+                        checkAvailableTimeSlots(dateStr);
+                    }
+                });
+            }
+            
+            // Form submission handler
+            document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = savedLang === 'sq' ? 'Duke rezervuar...' : 'Booking...';
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                const therapist = document.getElementById('therapist').value;
+                const date = document.getElementById('appointmentDate').value;
+                const selectedTimeInput = document.querySelector('input[name="time"]:checked');
+                
+                if (!selectedTimeInput) {
+                    alert(savedLang === 'sq' ? 'Ju lutemi zgjidhni një orar' : 'Please select a time slot');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = savedLang === 'sq' ? 'Rezervo Takimin' : 'Book Appointment';
+                    return;
+                }
+                
+                const time = selectedTimeInput.value;
+                const notes = document.getElementById('notes').value;
+                
+                // Get existing appointments
+                const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+                
+                // Check if the slot is still available (prevent double booking)
+                const isSlotTaken = appointments.some(appointment => 
+                    appointment.date === date && 
+                    appointment.time === time && 
+                    appointment.status !== 'cancelled'
+                );
+                
+                if (isSlotTaken) {
+                    // Slot was booked by someone else
+                    const messageDiv = document.getElementById('message');
+                    messageDiv.className = 'message error-message';
+                    messageDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> <span>${savedLang === 'sq' ? 'Ky orar sapo është rezervuar nga dikush tjetër. Ju lutemi zgjidhni një orar tjetër.' : 'This time slot has just been booked by someone else. Please select another time.'}</span>`;
+                    messageDiv.style.display = 'block';
+                    
+                    // Re-check available slots
+                    checkAvailableTimeSlots(date);
+                    
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = savedLang === 'sq' ? 'Rezervo Takimin' : 'Book Appointment';
+                    return;
+                }
+                
+                // Create new appointment
+                const newAppointment = {
+                    id: Date.now(), // Use timestamp as unique ID
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    service: service,
+                    therapist: therapist || 'No preference',
+                    date: date,
+                    time: time,
+                    notes: notes,
+                    status: 'pending',
+                    created: new Date().toISOString()
+                };
+                
+                // Add to appointments array
+                appointments.push(newAppointment);
+                
+                // Save to localStorage
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                
+                // Show success message
+                const messageDiv = document.getElementById('message');
+                messageDiv.className = 'message success-message';
+                messageDiv.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>${savedLang === 'sq' ? 'Takimi juaj u rezervua me sukses!' : 'Your appointment has been booked successfully!'}</span><br>
+                    <strong>${savedLang === 'sq' ? 'Data:' : 'Date:'}</strong> ${new Date(date).toLocaleDateString(savedLang === 'sq' ? 'sq-AL' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}<br>
+                    <strong>${savedLang === 'sq' ? 'Ora:' : 'Time:'}</strong> ${time}<br>
+                    <strong>${savedLang === 'sq' ? 'Shërbimi:' : 'Service:'}</strong> ${service}<br>
+                    ${therapist ? `<strong>${savedLang === 'sq' ? 'Terapisti:' : 'Therapist:'}</strong> ${therapist}<br>` : ''}
+                    <br>
+                    <span>${savedLang === 'sq' ? 'Ne do t\'ju kontaktojmë për të konfirmuar takimin tuaj.' : 'We will contact you to confirm your appointment.'}</span>
+                `;
+                messageDiv.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('appointmentForm').reset();
+                document.getElementById('timeSlots').innerHTML = `<p>${savedLang === 'sq' ? 'Ju lutemi zgjidhni një datë fillimisht' : 'Please select a date first'}</p>`;
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.textContent = savedLang === 'sq' ? 'Rezervo Takimin' : 'Book Appointment';
+                
+                // Scroll to message
+                messageDiv.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Function to check available time slots
+        function checkAvailableTimeSlots(date) {
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            
+            if (!date) {
+                timeSlotsContainer.innerHTML = `<p>${savedLang === 'sq' ? 'Ju lutemi zgjidhni një datë fillimisht' : 'Please select a date first'}</p>`;
+                return;
+            }
+            
+            // Show loading message
+            timeSlotsContainer.innerHTML = `<p>${savedLang === 'sq' ? 'Duke ngarkuar oraret e disponueshme...' : 'Loading available time slots...'}</p>`;
+            
+            // Get booked appointments
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const bookedSlots = appointments
+                .filter(appointment => appointment.date === date && appointment.status !== 'cancelled')
+                .map(appointment => appointment.time);
+            
+            // Check if the date is in the past
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(date);
+            selectedDate.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                timeSlotsContainer.innerHTML = `<p class="error-message">${savedLang === 'sq' ? 'Nuk mund të rezervoni takime në të kaluarën' : 'Cannot book appointments in the past'}</p>`;
+                return;
+            }
+            
+            // Check if the date is a weekend (Saturday = 6, Sunday = 0)
+            const dayOfWeek = selectedDate.getDay();
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                timeSlotsContainer.innerHTML = `<p class="error-message">${savedLang === 'sq' ? 'Ne jemi të mbyllur në fundjavë. Ju lutemi zgjidhni një ditë jave (E Hënë-E Premte).' : 'We are closed on weekends. Please select a weekday (Monday-Friday).'}</p>`;
+                return;
+            }
+            
+            // Generate time slots for weekdays (Monday-Friday)
+            const timeSlots = [
+                '09:00', '10:00', '11:00', '12:00',
+                '13:00', '14:00', '15:00', '16:00',
+                '17:00', '18:00'
+            ];
+            
+            let html = '';
+            let anyAvailable = false;
+            
+            timeSlots.forEach(time => {
+                const isBooked = bookedSlots.includes(time);
+                const disabled = isBooked ? 'disabled' : '';
+                
+                if (!isBooked) anyAvailable = true;
+                
+                html += `
+                    <div class="time-slot">
+                        <input type="radio" id="time-${time}" name="time" value="${time}" ${disabled} required>
+                        <label for="time-${time}">${time}${isBooked ? ` <span>${savedLang === 'sq' ? 'Rezervuar' : 'Booked'}</span>` : ''}</label>
+                    </div>
+                `;
+            });
+            
+            timeSlotsContainer.innerHTML = html;
+            
+            if (!anyAvailable) {
+                timeSlotsContainer.innerHTML += `<p class="error-message">${savedLang === 'sq' ? 'Nuk ka orare të disponueshme për këtë datë. Ju lutemi zgjidhni një datë tjetër.' : 'No available time slots for this date. Please select another date.'}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

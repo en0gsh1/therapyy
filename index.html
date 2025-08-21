@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">Therapy - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Language Switcher CSS -->
+    <style>
+        /* Language Switcher Styles */
+        .custom-select-wrapper {
+            position: relative;
+            width: 180px;
+            font-family: sans-serif;
+            margin-left: 20px;
+            color: #000;
+        }
+
+        .custom-select {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-select img {
+            width: 24px;
+            height: -20px;
+               margin-right: 10px;
+        }
+
+        .arrow {
+            font-size: 25px;
+            margin-left: auto;
+            color: #333;
+        }
+
+        .select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+        }
+
+        .select-options div {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .select-options div:hover {
+            background: #f0f0f0;
+        }
+
+        .select-options img {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        .select-options.show {
+            display: block;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .custom-select-wrapper {
+                margin: 15px 0 0;
+            }
+        }
+    </style>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/d830295dd625e13dc5997190fc42fae7-removebg-preview (1).png" alt="therapy logo" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item translatable" data-en="Home" data-sq="Ballina">Home</a>
+                <a href="services.html" class="nav-item translatable" data-en="Services" data-sq="Shërbimet">Services</a>
+                <a href="about.html" class="nav-item translatable" data-en="About" data-sq="Rreth Nesh">About</a>
+                <a href="contact.html" class="nav-item translatable" data-en="Contact" data-sq="Kontakti">Contact</a>
+                <a href="appointment.html" class="appointment-button translatable" data-en="Book Appointment" data-sq="Rezervo Takim">Book Appointment</a>
+                
+                <!-- Dropdown Language Switcher -->
+                <div class="custom-select-wrapper">
+                    <div class="custom-select" onclick="toggleDropdown()">
+                        <img id="selected-flag" src="https://flagcdn.com/w40/us.png" alt="flag" />
+                        <span id="selected-lang">English</span>
+                        <span class="arrow">▾</span>
+                    </div>
+                    <div class="select-options">
+                        <div onclick="selectLanguage('en')">
+                            <img src="https://flagcdn.com/w40/us.png" alt="EN" />
+                            <span>English</span>
+                        </div>
+                        <div onclick="selectLanguage('sq')">
+                            <img src="https://flagcdn.com/w40/al.png" alt="SQ" />
+                            <span>Shqip</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="textt translatable" data-en="Physiotherapy and osteopathy clinic" data-sq="Klinikë e fizioterapisë dhe osteopatisë">Physiotherapy and osteopathy clinic</h1>
+                <h1 class="texyyy translatable" data-en="Therapy" data-sq="Therapy">Therapy</h1>
+                <div class="cta-container">
+                    <a href="appointment.html" class="cta-button translatable" data-en="Book Appointment" data-sq="Rezervo Takim">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <section class="featured-services">
+        <h2 class="section-title translatable" data-en="Our Specialties" data-sq="Specialitetet Tona">Our Specialties</h2>
+        <div class="wave-divider"></div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3 class="translatable" data-en="Physiotherapy Treatment" data-sq="Trajtim Fizioterapeutik">Physiotherapy Treatment</h3>
+                <p class="translatable" data-en="Comprehensive rehabilitation programs after surgery." data-sq="Programe gjithëpërfshirëse rehabilitimi pas operacionit.">Comprehensive rehabilitation programs after surgery.</p>
+                <a href="services.html" class="service-link translatable" data-en="Learn More" data-sq="Mëso Më Shumë">Learn More</a>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="translatable" data-en="Osteopathy" data-sq="Osteopati">Osteopathy</h3>
+                <p class="translatable" data-en="Effective strategies to manage and eliminate chronic pain." data-sq="Strategji efektive për menaxhimin dhe eliminimin e dhimbjeve kronike.">Effective strategies to manage and eliminate chronic pain.</p>
+                <a href="services.html" class="service-link translatable" data-en="Learn More" data-sq="Mëso Më Shumë">Learn More</a>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3 class="translatable" data-en="Sport Physiotherapy" data-sq="Fizioterapi Sportive">Sport Physiotherapy</h3>
+                <p class="translatable" data-en="Specialized treatment for sports injuries and performance enhancement." data-sq="Trajtim i specializuar për lëndimet sportive dhe përmirësimin e performancës.">Specialized treatment for sports injuries and performance enhancement.</p>
+                <a href="services.html" class="service-link translatable" data-en="Learn More" data-sq="Mëso Më Shumë">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title translatable" data-en="Our Gallery" data-sq="Galeria Jonë">Our Gallery</h2>
+            <div class="gallery-slider-container">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide active">
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/facility.jpg" alt="Physiotherapy facility">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Modern Facility" data-sq="Objekt Modern">Modern Facility</h3></div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/Untitled design.png" alt="Treatment session">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Professional Care" data-sq="Kujdes Profesional">Professional Care</h3></div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/pun.jpg" alt="Rehabilitation equipment">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Modern Equipment" data-sq="Pajisje Moderne">Modern Equipment</h3></div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/session.png" alt="Therapy session">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Personalized Treatment" data-sq="Trajtim i Personalizuar">Personalized Treatment</h3></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-grid">
+                            <div class="gallery-item hidden-item">
+                                <img src="images/seeyuh.png" alt="Exercise therapy">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Exercise Programs" data-sq="Programe Ushtrimesh">Exercise Programs</h3></div>
+                            </div>
+                            <div class="gallery-item hidden-item">
+                                <img src="images/fuh.png" alt="Manual therapy">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Manual Therapy" data-sq="Terapi Manuale">Manual Therapy</h3></div>
+                            </div>
+                            <div class="gallery-item hidden-item">
+                                <img src="images/Untitled design (1).png" alt="Patient consultation">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Patient Consultation" data-sq="Konsultim me Pacientë">Patient Consultation</h3></div>
+                            </div>
+                            <div class="gallery-item hidden-item">
+                                <img src="images/9544e652-d41f-41d8-bef0-18a851d5d270_0.jpeg" alt="Recovery progress">
+                                <div class="gallery-caption"><h3 class="translatable" data-en="Recovery Journey" data-sq="Rrugëtimi i Shërimit">Recovery Journey</h3></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-navigation">
+                    <button class="slider-dot active" data-slide="0"></button>
+                    <button class="slider-dot" data-slide="1"></button>
+                </div>
+                <button class="slider-arrow prev" id="prevSlide" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-arrow next" id="nextSlide" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-preview">
+        <h2 class="section-title translatable" data-en="Meet Our Team" data-sq="Njihuni me Ekipin Tonë">Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member slide-in-left">
+                <div class="member-photo">
+                    <div class="seeyuh">
+                        <img src="images/18c1548568573064aa7aecfbe1844609.png" alt="">
+                    </div>
+                </div>
+                <h3>Prof.Asocc.Dr Zheraldin Derguri PT ODR</h3>
+                <p class="translatable" data-en="Head Physiotherapist" data-sq="Fizioterapist Kryesor">Head Physiotherapist</p>
+            </div>
+            <div class="team-member slide-in-bottom">
+                <div class="member-photo">
+                    <div class="seeyuh">
+                        <img src="images/a.png" alt="">
+                    </div>
+                </div>
+                <h3>Zymreta Derguti PT</h3>
+                <p class="translatable" data-en="Sports Specialist" data-sq="Specialist i Sportit">Sports Specialist</p>
+            </div>
+            <div class="team-member slide-in-right">
+                <div class="member-photo">
+                    <div class="seeyuh">
+                        <img src="images/downloada.png" alt="">
+                    </div>
+                </div>
+                <h3>Dea Derguti PT</h3>
+                <p class="translatable" data-en="Rehabilitation Expert" data-sq="Ekspert i Rehabilitimit">Rehabilitation Expert</p>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <a href="about.html" class="view-all-button translatable" data-en="View All Team Members" data-sq="Shiko të Gjithë Anëtarët e Ekipit">View All Team Members</a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 class="section-title translatable" data-en="What Our Patients Say" data-sq="Çfarë Thonë Pacientët Tanë">What Our Patients Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-card active">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="translatable" data-en="\"After my knee surgery, I thought I'd never run again. Thanks to Therapy, I'm back to my marathon training!\"" data-sq="\"Pas operacionit të gjurit, mendova se nuk do të vrapoja më kurrë. Falë Therapy, jam kthyer në stërvitjen time për maratonë!\"">"After my knee surgery, I thought I'd never run again. Thanks to Therapy, I'm back to my marathon training!"</p>
+                <div class="testimonial-author translatable" data-en="- James Wilson" data-sq="- James Wilson">- James Wilson</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="translatable" data-en="\"The chronic back pain I suffered for years is finally manageable. The team here is amazing!\"" data-sq="\"Dhimbja kronike e shpinës që vuajta për vite më në fund është e menaxhueshme. Ekipi këtu është i mrekullueshëm!\"">"The chronic back pain I suffered for years is finally manageable. The team here is amazing!"</p>
+                <div class="testimonial-author translatable" data-en="- Lisa Thompson" data-sq="- Lisa Thompson">- Lisa Thompson</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="translatable" data-en="\"Professional, caring, and effective. I recommend Therapy to all my athletic friends.\"" data-sq="\"Profesional, të kujdesshëm dhe efektivë. Unë ua rekomandoj Therapy të gjithë miqve të mi atletë.\"">"Professional, caring, and effective. I recommend Therapy to all my athletic friends."</p>
+                <div class="testimonial-author translatable" data-en="- Robert Davis" data-sq="- Robert Davis">- Robert Davis</div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-btn" aria-label="Previous testimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" aria-label="Next testimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-shapes">
+            <div class="footer-shape footer-shape-1"></div>
+            <div class="footer-shape footer-shape-2"></div>
+            <div class="footer-shape footer-shape-3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo translatable" data-en="Therapy" data-sq="Therapy">Therapy</div>
+                <p class="translatable" data-en="Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs." data-sq="Shërbime profesionale të fizioterapisë që ju ndihmojnë të shëroheni më shpejt dhe të lëvizni më mirë. Ekipi ynë i ekspertëve është i përkushtuar për të ofruar kujdes të personalizuar për të gjitha nevojat tuaja.">Professional physiotherapy services helping you recover faster and move better. Our team of experts is dedicated to providing personalized care for all your needs.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Our Services" data-sq="Shërbimet Tona">Our Services</h3>
+                <div class="footer-links">
+                    <a href="services.html" class="translatable" data-en=" Physiotherapy Treatment" data-sq=" Trajtim Fizioterapeutik"><i class="fas fa-chevron-right"></i> Physiotherapy Treatment</a>
+                    <a href="services.html" class="translatable" data-en=" Osteopathy" data-sq="Osteopati"><i class="fas fa-chevron-right"></i> Osteopathy</a>
+                    <a href="services.html" class="translatable" data-en=" Sports Physiotherapy" data-sq="Fizioterapi Sportive"><i class="fas fa-chevron-right"></i> Sports Physiotherapy</a>
+                    <a href="services.html" class="translatable" data-en=" Neurological Rehabilitation" data-sq="Rehabilitim Neurologjik"><i class="fas fa-chevron-right"></i> Neurological Rehabilitation</a>
+                    <a href="services.html" class="translatable" data-en="Pediatric Physiotherapy" data-sq=" Fizioterapi Pediatrike"><i class="fas fa-chevron-right"></i> Pediatric Physiotherapy</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="translatable" data-en="Contact Info" data-sq="Informacione Kontakti">Contact Info</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> <span class="translatable" data-en="Rifat Burdzeviç, Prishtina, Kosovo 10000" data-sq="Rifat Burdzeviç, Prishtinë, Kosovë 10000">Rifat Burdzeviç, Prishtina, Kosovo 10000</span></p>
+                    <p><i class="fas fa-phone-alt"></i> <span class="translatable" data-en="+38345646464" data-sq="+38345646464">+38345646464</span></p>
+                    <p><i class="fas fa-envelope"></i> <span class="translatable" data-en="info@therapy.com" data-sq="info@therapy.com">info@therapy.com</span></p>
+                    <p><i class="fas fa-clock"></i> <span class="translatable" data-en="Mon-Fri: 8:00 AM - 7:00 PM" data-sq="E Hënë-E Premte: 8:00 - 19:00">Mon-Fri: 8:00 AM - 7:00 PM</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="translatable" data-en="© 2025 Therapy. All rights reserved. | Designed by Eno Gashi" data-sq="© 2025 Therapy. Të gjitha të drejtat e rezervuara. | Dizajnuar nga Eno Gashi">© 2025 Therapy. All rights reserved. | Designed by Eno Gashi</p>
+        </div>
+    </footer>
+
+    <div class="therapy-chat-assistant" id="therapyChatAssistant">
+        <div class="therapy-chat-icon" id="therapyChatIcon">
+            <i class="fas fa-comment-medical"></i>
+            <span class="therapy-chat-notification">1</span>
+        </div>
+        <div class="therapy-chat-window" id="therapyChatWindow">
+            <div class="therapy-chat-header">
+                <div class="therapy-chat-title">
+                    <i class="fas fa-user-md"></i>
+                    <span class="translatable" data-en="Therapy Assistant" data-sq="Asistenti i Terapisë">Therapy Assistant</span>
+                </div>
+                <div class="therapy-chat-controls">
+                    <button class="therapy-minimize-chat" id="therapyMinimizeChat" aria-label="Minimize chat">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button class="therapy-close-chat" id="therapyCloseChat" aria-label="Close chat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="therapy-chat-messages" id="therapyChatMessages">
+                <div class="therapy-message therapy-assistant">
+                    <div class="therapy-message-content">
+                        <p class="translatable" data-en="Hello! I'm your Therapy Assistant. How can I help you with your physiotherapy needs today?" data-sq="Përshëndetje! Unë jam Asistenti juaj i Terapisë. Si mund t'ju ndihmoj me nevojat tuaja të fizioterapisë sot?">Hello! I'm your Therapy Assistant. How can I help you with your physiotherapy needs today?</p>
+                    </div>
+                    <span class="therapy-message-time translatable" data-en="Just now" data-sq="Tani">Just now</span>
+                </div>
+            </div>
+            <div class="therapy-chat-input">
+                <input type="text" id="therapyUserMessage" placeholder="Type your question here..." aria-label="Type your message">
+                <button id="therapySendMessage" aria-label="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="therapy-chat-suggestions">
+                <button class="therapy-suggestion-btn translatable" data-en="Book an appointment" data-sq="Rezervo një takim">Book an appointment</button>
+                <button class="therapy-suggestion-btn translatable" data-en="Common exercises" data-sq="Ushtrime të zakonshme">Common exercises</button>
+                <button class="therapy-suggestion-btn translatable" data-en="Pain management" data-sq="Menaxhimi i dhimbjes">Pain management</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        function toggleDropdown() {
+            document.querySelector('.select-options').classList.toggle('show');
+        }
+
+        function selectLanguage(lang) {
+            const flag = lang === 'sq'
+                ? 'https://flagcdn.com/w40/al.png'
+                : 'https://flagcdn.com/w40/us.png';
+
+            const label = lang === 'sq' ? 'Shqip' : 'English';
+
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            document.querySelector('.select-options').classList.remove('show');
+
+            switchLanguage(lang);
+        }
+
+        // Optional: Close dropdown if clicked outside
+        window.addEventListener('click', function (e) {
+            if (!document.querySelector('.custom-select-wrapper').contains(e.target)) {
+                document.querySelector('.select-options').classList.remove('show');
+            }
+        });
+
+        function switchLanguage(lang) {
+            const html = document.documentElement;
+
+            // Set lang attribute
+            html.setAttribute('lang', lang);
+
+            // Update text for all translatable elements
+            document.querySelectorAll('.translatable').forEach(el => {
+                if (el.dataset[lang]) {
+                    el.textContent = el.dataset[lang];
+                }
+            });
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Initialize with saved language or default to English
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            
+            // Set initial flag and label
+            const flag = savedLang === 'sq'
+                ? 'https://flagcdn.com/w40/al.png'
+                : 'https://flagcdn.com/w40/us.png';
+            const label = savedLang === 'sq' ? 'Shqip' : 'English';
+            
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            
+            // Apply saved language
+            switchLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
